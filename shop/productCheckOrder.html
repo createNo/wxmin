@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=yes" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>确认订单</title>
+		<!--公共-->
+		<link rel="stylesheet" type="text/css" href="../css/static/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/mui.picker.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/public.css" />
+		<script src="../js/static/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/echarts-all.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/mui.min.js"></script>
+		<script src="../js/static/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/toRem.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--shop-->
+		<script src="../js/shop_public.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div class="publicNav">
+			<header id="header" class="mui-bar mui-bar-nav">
+				<i class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></i>
+				<h1 class="mui-title">导航栏</h1>
+				<i class="mui-icon mui-icon-bars mui-pull-right"></i>
+			</header>
+		</div>
+		<div class="mui-content-padded">
+			<form class="mui-input-group checkorder">
+				<div class="mui-input-row">
+					<label>选择地址</label>
+					<input type="text" readonly="readonly" name="selectAddressText" class="selectAddressText" placeholder="请选择地址">
+					<input type="hidden" name="selectAddressId" class="selectAddressId">
+				</div>
+			<div class="allCom">
+				<div class="oneCom">
+					<div class="comCheck "></div>
+					<div class="comImg ">
+						<img src="../img/1.jpg" />
+					</div>
+					<div class="comInfo ">
+						<div class="comOther">
+							<div class="productTitle">破壁料理机破壁料理机破壁料理机破壁料理机破壁料理机破壁料理机</div>
+							<div class="productPrice">￥18 <span class="realPrice">23</span></div>
+						</div>
+						<div class="comNum">x 12</div>
+					</div>
+				</div>
+				<div class="oneCom">
+					<div class="comCheck "></div>
+					<div class="comImg ">
+						<img src="../img/1.jpg" />
+					</div>
+					<div class="comInfo ">
+						<div class="comOther">
+							<div class="productTitle">破壁料理机破壁料理机破壁料理机破壁料理机破壁料理机破壁料理机</div>
+							<div class="productPrice">￥18 <span class="realPrice">23</span></div>
+						</div>
+						<div class="comNum">x 12</div>
+					</div>
+				</div>
+			</div>
+				<div class="mui-input-row mui-checkbox">
+					<label>发票需求</label>
+					<div class="mui-switch mui-switch-mini isuser">
+						<div class="mui-switch-handle"></div>
+					</div>
+					<input name="status" type="hidden" class="status" value="false">
+				</div>
+				<div class="mui-input-row  statusShow">
+					<label>发票类型</label>
+					<!--<input type="text" placeholder="请发票类型">-->
+						<div class="mui-radio " style="width: 37.5%;float: left;line-height: 40px;">
+							个人<input type="radio" name="type" class="" id="" value="" />
+						</div>
+						<div class="mui-radio" style="width: 37.5%;float: left;line-height: 40px;">
+							企业<input type="radio" name="type" class="" id="" value="" />
+						</div>
+				</div>
+				<div class="mui-input-row statusShow">
+					<label>税号</label>
+					<input type="text" placeholder="请输入税号">
+				</div>
+				<div class="mui-input-row statusShow">
+					<label>公司名称</label>
+					<input type="text" placeholder="请输入公司名称">
+				</div>
+				<div class="mui-input-row statusShow">
+					<label>发票信息</label>
+					<input type="text" placeholder="请输入发票信息">
+				</div>
+			</form>
+		</div>
+		<div class="footer">
+			<div class="fixedFooter">
+				<div class="orderTab orderTabGray">
+					<div class="orderInfo">
+						<span class="orderPrice">共计 ：<span class="colorred">￥100</span></span>
+					</div>
+					<div class="orderBtn">确认支付</div>
+				</div>
+			</div>
+		</div>
+
+		<!--弹出层-->
+		<!--地址-->
+		<div id="address" class="mui-popover mui-popover-bottom mui-popover-action ">
+			<ul class="mui-table-view allAddress">
+			</ul>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell cancelAddress"><b>取消</b></li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$('.selectAddressText').on('click', function() {
+			$('.allAddress').html('');
+			for(var i = 0; i < 4; i++) {
+				var str = '<li class="mui-table-view-cell oneAddress" id="a' + i + '" onclick="chooseAddress(this)">地址' + i + '</li>';
+				$('.allAddress').append($(str));
+			}
+			mui('#address').popover('toggle');
+		})
+
+		function chooseAddress(item) {
+			var selectAddressText = $(item).html();
+			var selectAddressId = $(item).attr('id');
+			$('.selectAddressText').val(selectAddressText);
+			$('.selectAddressId').val(selectAddressId);
+			mui('#address').popover('hide');
+		}
+		$('.cancelAddress').on('click', function() {
+			mui('#address').popover('hide');
+		});
+		
+		
+		$('.statusShow').stop().hide();
+		$('.isuser').on('toggle',function(e){
+			var status=event.detail.isActive;
+			$('.status').val(status);
+			if(status){
+				$('.statusShow').stop().show();
+			}else{
+				$('.statusShow').stop().hide();
+			}
+		})
+	</script>
+
+</html>

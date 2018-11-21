@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=yes" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>我的订单</title>
+		<!--公共-->
+		<link rel="stylesheet" type="text/css" href="../css/static/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/mui.picker.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/public.css" />
+		<script src="../js/static/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/echarts-all.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/mui.min.js"></script>
+		<script src="../js/static/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/toRem.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--shop-->
+		<script src="../js/shop_public.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div class="publicNav">
+			<header id="header" class="mui-bar mui-bar-nav">
+				<i class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></i>
+				<h1 class="mui-title">导航栏</h1>
+				<i class="mui-icon mui-icon-bars mui-pull-right"></i>
+			</header>
+		</div>
+		<div class="mui-content">
+			<div id="sliderSegmentedControl" class="mui-segmented-control mui-segmented-control-inverted orderType">
+				<a class="mui-control-item mui-active" href="#item1mobile">
+					全部
+				</a>
+				<a class="mui-control-item" href="#item2mobile">
+					待付款
+				</a>
+				<a class="mui-control-item" href="#item3mobile">
+					待发货
+				</a>
+				<a class="mui-control-item" href="#item4mobile">
+					已发货
+				</a>
+			</div>
+			<div class="mui-slider-group orderGroup">
+				<div id="item1mobile" class="mui-slider-item mui-control-content orderContent mui-active">
+					<div class="oneOrder">
+						<div class="orderHead">订单编号：10454 <span class="orderStatus">未付款</span></div>
+						<div class="orderBody">
+							<div class="orderImg"><img src="../img/p.png" /></div>
+							<div class="myorderInfo">
+								<div class="orderTitle">破壁料理机破壁料理机破壁料理机破壁料理机破壁料理机破壁料理机</div>
+								<div class="orderDesc">5速控制，加厚玻璃杯身5速控制，加厚玻璃杯身5速控制，加厚玻璃杯身5速控制，加厚玻璃杯身5速控制，加厚玻璃杯身</div>
+							</div>
+						</div>
+						<div class="orderFoot">应付：￥155 <span class="orderCheck">立即支付</span></div>
+					</div>
+					<div class="oneOrder">
+						<div class="orderHead">订单编号：10454 <span class="orderStatus">未付款</span></div>
+						<div class="orderBody">
+							<div class="orderImg"><img src="../img/p.png" /></div>
+							<div class="myorderInfo">
+								<div class="orderTitle">破壁料理机破壁料理机破壁料理机破壁料理机破壁料理机破壁料理机</div>
+								<div class="orderDesc">5速控制，加厚玻璃杯身5速控制，加厚玻璃杯身5速控制，加厚玻璃杯身5速控制，加厚玻璃杯身5速控制，加厚玻璃杯身</div>
+							</div>
+						</div>
+						<div class="orderFoot">应付：￥155 <span class="orderCheck">立即支付</span></div>
+					</div>
+					<div class="oneOrder">
+						<div class="orderHead">订单编号：10454 <span class="orderStatus">未付款</span></div>
+						<div class="orderBody">
+							<div class="orderImg"><img src="../img/p.png" /></div>
+							<div class="myorderInfo">
+								<div class="orderTitle">破壁料理机破壁料理机破壁料理机破壁料理机破壁料理机破壁料理机</div>
+								<div class="orderDesc">5速控制，加厚玻璃杯身5速控制，加厚玻璃杯身5速控制，加厚玻璃杯身5速控制，加厚玻璃杯身5速控制，加厚玻璃杯身</div>
+							</div>
+						</div>
+						<div class="orderFoot">应付：￥155 <span class="orderCheck">立即支付</span></div>
+					</div>
+				</div>
+				<div id="item2mobile" class="mui-slider-item mui-control-content orderContent">
+					<div class="mui-loading">
+						<div class="mui-spinner">
+						</div>
+					</div>
+
+				</div>
+				<div id="item3mobile" class="mui-slider-item mui-control-content orderContent">
+					<div class="mui-loading">
+						<div class="mui-spinner">
+						</div>
+					</div>
+
+				</div>
+				<div id="item4mobile" class="mui-slider-item mui-control-content orderContent">
+					<div class="mui-loading">
+						<div class="mui-spinner">
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

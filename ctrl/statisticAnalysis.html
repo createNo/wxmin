@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=yes" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>统计分析</title>
+		<!--公共-->
+		<link rel="stylesheet" type="text/css" href="../css/static/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/mui.picker.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/public.css" />
+		<script src="../js/static/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/echarts-all.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/mui.min.js"></script>
+		<script src="../js/static/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/toRem.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--shop-->
+		<script src="../js/ctrl_public.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../css/public2.css" />
+	</head>
+
+	<body>
+		<div class="publicNav">
+			<header id="header" class="mui-bar mui-bar-nav">
+				<i class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></i>
+				<h1 class="mui-title">统计分析</h1>
+			</header>
+		</div>
+		<div class="mui-content topBox">
+			<div class="orderType">
+				<div class="itemactive itemmobile" id="orderStatus0">
+					压力曲线
+				</div>
+				<div class=" itemmobile" id="orderStatus1">
+					流量曲线
+				</div>
+				<div class=" itemmobile" id="orderStatus2">
+					温度曲线
+				</div>
+				<div class=" itemmobile" id="orderStatus3">
+					热量曲线
+				</div>
+				<div class=" itemmobile" id="orderStatus4">
+					室内外温
+				</div>
+			</div>
+			<div class="infoArea">
+				<div class="mui-row">
+					<div class="mui-col-xs-6 placeTypeBox ">
+						<div class="placeType" id="selectAddress">盛世华庭小区</div>
+					</div>
+					<div class="mui-col-xs-3 placeTypeBox ">
+						<div class="placeType">1号楼</div>
+					</div>
+					<div class="mui-col-xs-3 placeTypeBox ">
+						<div class="placeType">1单元</div>
+					</div>
+				</div>
+				<div class="mui-row">
+					<div class="placeTypeBox">
+						<div class="placeType placeType1">
+							<img src="../img/time.png" />
+						</div>
+						<div class="placeType placeType4" id="selectTimestart"></div>
+						<div class="placeType placeType2">至</div>
+						<div class="placeType placeType4" id="selectTimeend"></div>
+						<div class="placeType placeType3">查询</div>
+						<div class="clearBoth"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mui-content-padded chartBox">
+			<div class="chart" id="lineChart"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		//	图表页高度	
+		$('.chartBox').height($(window).height() - $('.publicNav').height() - $('.topBox').height() - 20);
+		var chartOption = {
+			legend: {
+				data: ['蒸发量', '降水量']
+			},
+			grid: {
+				x: 35,
+				x2: 10,
+				y: 30,
+				y2: 25
+			},
+			toolbox: {show: false,feature: {mark: {show: true},dataView: {show: true,readOnly: false},magicType: {show: true,type: ['line', 'bar']},restore: {show: true},saveAsImage: {show: true}}},
+			calculable: false,
+			xAxis: [{
+				type: 'category',
+				data: ['0:00', '3:00', '6:00', '9:00', '12:00', '15:00', '18:00', '21:00', '24:00']
+			}],
+			yAxis: [{
+				type: 'value',
+				splitArea: {
+					show: true
+				}
+			}],
+			series: [{
+				name: '蒸发量',
+				type: 'line',
+				data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6]
+			}, {
+				name: '降水量',
+				type: 'line',
+				data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7]
+			}
+			, {
+				name: '降水量',
+				type: 'line',
+				data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 17225.6, 182.2, 48.7]
+			}]
+		};
+		var byId = function(id) {
+			return document.getElementById(id);
+		};
+		var lineChart = echarts.init(byId('lineChart'));
+		lineChart.setOption(chartOption);
+		(function($$, $) {
+			$$.init();
+			var picker1 = new mui.PopPicker({ layer: 1 });
+			var picker2 = new $$.DtPicker({ "type": "date" });
+			picker1.setData([{
+					value: '110000',
+					text: '盛世华庭小区',
+				},
+				{
+					value: '110000',
+					text: '盛世华庭小区',
+				},
+				{
+					value: '110000',
+					text: '盛世华庭小区',
+				},
+				{
+					value: '110000',
+					text: '盛世华庭小区',
+				},
+				{
+					value: '110000',
+					text: '盛世华庭小区',
+				},
+			]);
+			$('#selectAddress').on('click', function() {
+				picker1.show(function(SelectedItem) {
+					console.log(SelectedItem)
+				})
+			})
+			$('#selectTimestart').on('click', function() {
+				picker2.show(function(SelectedItem) {
+					$('#selectTimestart').text(SelectedItem.value)
+				})
+			})
+			$('#selectTimeend').on('click', function() {
+				picker2.show(function(SelectedItem) {
+					$('#selectTimeend').text(SelectedItem.value)
+				})
+			})
+		})(mui, jQuery);
+	</script>
+
+</html>

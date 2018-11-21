@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=yes" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>地址修改</title>
+		<!--公共-->
+		<link rel="stylesheet" type="text/css" href="../css/static/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/mui.picker.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/static/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/public.css" />
+		<script src="../js/static/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/echarts-all.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/mui.min.js"></script>
+		<script src="../js/static/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/toRem.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--shop-->
+		<script src="../js/shop_public.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div class="publicNav">
+			<header id="header" class="mui-bar mui-bar-nav">
+				<i class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></i>
+				<h1 class="mui-title">导航栏</h1>
+				<i class="mui-icon mui-icon-bars mui-pull-right"></i>
+			</header>
+		</div>
+		<div class="mui-content-padded">
+			<form class="mui-input-group addressAdd">
+				<div class="mui-input-row">
+					<label>姓名</label>
+					<input type="text" placeholder="请输入姓名">
+				</div>
+				<div class="mui-input-row">
+					<label>手机号</label>
+					<input type="text" placeholder="请输入手机号">
+				</div>
+				<div class="mui-input-row">
+					<label>选择地址</label>
+					<input type="text" readonly="readonly" name="selectAddressText" class="selectAddressText" placeholder="请选择地址">
+					<input type="hidden" name="selectAddressId" class="selectAddressId">
+				</div>
+				<div class="mui-input-row ">
+					<label>详细地址</label>
+					<input type="text" placeholder="请输入详细地址">
+				</div>
+				<div class="mui-input-row mui-checkbox">
+					<label>设为默认</label>
+					<input name="" type="checkbox">
+				</div>
+			</form>
+		</div>
+		<div class="footer">
+			<div class="fixedFooter">
+				<div class="oneTab oneTabGray">
+					取消
+				</div>
+				<div id="sheet1Show" class="oneTab oneTabRed">
+					确定
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var picker = new mui.PopPicker({
+			layer: 2
+		});
+		picker.setData([{
+			value: '110000',
+			text: '北京市',
+			children: [{
+				value: "110101",
+				text: "东城区"
+			}]
+		}, {
+			value: '120000',
+			text: '天津市',
+			children: [{
+				value: "120101",
+				text: "和平区"
+			}, {
+				value: "120102",
+				text: "河东区"
+			}, {
+				value: "120104",
+				text: "南开区"
+			}]
+		}]);
+		$('.selectAddressText').on('click',function(){
+			picker.show(function(SelectedItem) {
+				var selectAddressText='';
+				var selectAddressId='';
+				var res=picker.getSelectedItems();
+				if(res.length>0){
+					for(var i=0;i<res.length;i++) {
+						selectAddressText+=res[i].text;
+					}
+					selectAddressId=res[res.length-1].value
+				}
+				$('.selectAddressText').val(selectAddressText);
+				$('.selectAddressId').val(selectAddressId);
+			})
+		})
+	</script>
+
+</html>

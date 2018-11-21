@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=yes" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>智能调控</title>
+		<!--公共-->
+		<link rel="stylesheet" type="text/css" href="../css/static/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/mui.picker.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="../css/static/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/public.css" />
+		<script src="../js/static/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/echarts-all.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/mui.min.js"></script>
+		<script src="../js/static/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/toRem.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/static/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--shop-->
+		<script src="../js/ctrl_public.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../css/public2.css" />
+	</head>
+
+	<body>
+		<div class="publicNav">
+			<header id="header" class="mui-bar mui-bar-nav">
+				<i class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></i>
+				<h1 class="mui-title">智能调控</h1>
+				<i class="mui-icon fa fa-qrcode mui-pull-right navBtn" >&nbsp;&nbsp;扫一扫</i>
+			</header>
+		</div>
+		<div class="mui-content-padded">
+			<div style="height: 1rem;"></div>
+			<div class="controlSearch-box">
+				<input type="text" class="controlSearch-input" name="" id="" value="" />
+				<div class="controlSearch-place">请输入阀号</div>
+				<div class="controlSearch-btn">
+					<img src="../img/img2/fangdajing.png" class="controlSearch-img"/>
+				</div>
+			</div>
+			<div style="height: 1rem;"></div>
+			<div class="publicItem publicItem-bottom publicItem-right">
+				<div class="publicItem-leftICon publicItem-iCon">
+					<img src="../img/img2/xiaoqu.png" />
+				</div>
+				<div class="publicItem-content">
+					<div class="publicItem-contentLeft">小区：</div>
+					<div class="publicItem-contentRight">盛世华庭小区</div>
+					<div class="clearBoth"></div>
+				</div>
+				<div class="publicItem-rightICon publicItem-iCon">
+					<img src="../img/img2/youjiantou.png" />
+				</div>
+			</div>
+			<div class="publicItem publicItem-bottom publicItem-right">
+				<div class="publicItem-leftICon publicItem-iCon">
+					<img src="../img/img2/louhao.png" />
+				</div>
+				<div class="publicItem-content">
+					<div class="publicItem-contentLeft">楼号：</div>
+					<div class="publicItem-contentRight">1号楼</div>
+					<div class="clearBoth"></div>
+				</div>
+				<div class="publicItem-rightICon publicItem-iCon">
+					<img src="../img/img2/youjiantou.png" />
+				</div>
+			</div>
+			<div class="publicItem publicItem-bottom publicItem-right">
+				<div class="publicItem-leftICon publicItem-iCon">
+					<img src="../img/img2/danyuan.png" />
+				</div>
+				<div class="publicItem-content">
+					<div class="publicItem-contentLeft">单元：</div>
+					<div class="publicItem-contentRight">1单元</div>
+					<div class="clearBoth"></div>
+				</div>
+				<div class="publicItem-rightICon publicItem-iCon">
+					<img src="../img/img2/youjiantou.png" />
+				</div>
+			</div>
+			<div style="height: 2rem;"></div>
+			<div class="publicBtn">
+				查询
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$('.controlSearch-place').on('click',function(){
+			$(this).stop().hide();
+			$('.controlSearch-input').val('');
+			$('.controlSearch-input').focus();
+		});
+		$('.controlSearch-input').on('blur',function(){
+			if($('.controlSearch-input').val()==''){
+				$('.controlSearch-place').stop().show();
+			}
+		});
+		$('.controlSearch-btn').on('click',function(){
+			$('.controlSearch-place').stop().hide();
+			$('.controlSearch-input').focus();
+		});
+		
+	</script>
+
+</html>
